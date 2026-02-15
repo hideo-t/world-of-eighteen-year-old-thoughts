@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18歳の思い</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a2e;
+      --text-primary: #e0ddd5;
+      --text-secondary: #8a8a9a;
+      --accent: #4a9eff;
+      --accent-dim: #2a5a9a;
+      --gold: #c4a35a;
+      --chapter-border: #2a2a3e;
+      --serif: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+      --sans: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.95;
+      min-height: 100vh;
+    }
+
+    /* ─── Header ─── */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 100px 20px 80px;
+      background: linear-gradient(180deg, #1a2a4a 0%, #0f1a2f 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(120,180,255,0.15) 0%, transparent 70%);
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      text-shadow: 0 2px 20px rgba(100,160,255,0.3);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: #b0c4de;
+      letter-spacing: 0.15em;
+    }
+    .hero-line {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      margin: 28px auto 0;
+    }
+
+    /* ─── Navigation ─── */
+    .nav-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--chapter-border);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      overflow-x: auto;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+    }
+    .nav-bar .nav-title {
+      color: var(--gold);
+      font-weight: 700;
+      white-space: nowrap;
+      margin-right: 8px;
+    }
+    .nav-bar a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .nav-bar a:hover {
+      color: var(--accent);
+      background: rgba(74,158,255,0.1);
+    }
+
+    /* ─── TOC ─── */
+    .toc {
+      max-width: 700px;
+      margin: 60px auto 40px;
+      padding: 0 20px;
+    }
+    .toc h3 {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .toc-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 18px;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-left: 2px solid var(--chapter-border);
+      transition: all 0.25s;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+    }
+    .toc-item:hover {
+      border-color: var(--accent);
+      background: rgba(74,158,255,0.04);
+      padding-left: 24px;
+    }
+    .toc-num {
+      font-size: 0.75rem;
+      color: var(--accent-dim);
+      font-weight: 700;
+      min-width: 20px;
+    }
+
+    /* ─── Characters ─── */
+    .characters {
+      max-width: 700px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+    }
+    .characters h3 {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .char-card {
+      background: var(--bg-card);
+      border: 1px solid var(--chapter-border);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .char-name {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .char-role {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .char-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ─── Divider ─── */
+    .section-divider {
+      width: 40px; height: 1px;
+      background: var(--chapter-border);
+      margin: 0 auto;
+    }
+
+    /* ─── Chapter ─── */
+    .chapter {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      border-top: 1px solid var(--chapter-border);
+    }
+    .chapter-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .chapter-number {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--accent-dim);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .chapter-title {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .chapter-image {
+      margin: 0 -20px 40px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--chapter-border);
+    }
+    .chapter-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.92;
+    }
+    .chapter-body p {
+      margin-bottom: 1.2em;
+      text-indent: 1em;
+      text-align: justify;
+    }
+    .chapter-body p:empty {
+      display: none;
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      text-align: center;
+      padding: 60px 20px;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--chapter-border);
+    }
+
+    /* ─── Reading mode toggle ─── */
+    .mode-toggle {
+      position: fixed; bottom: 20px; right: 20px; z-index: 200;
+      background: var(--bg-card);
+      border: 1px solid var(--chapter-border);
+      color: var(--text-secondary);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+
+    /* --- TTS Read Aloud --- */
+    .tts-fab {
+      position: fixed; bottom: 80px; right: 20px; z-index: 200;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent); color: #fff; border: none;
+      font-size: 22px; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tts-fab:hover { transform: scale(1.1); }
+    .tts-fab.speaking { background: #e74c3c; animation: tts-pulse 1.5s infinite; }
+    @keyframes tts-pulse {
+      0%,100% { box-shadow: 0 4px 16px rgba(231,76,60,0.4); }
+      50% { box-shadow: 0 4px 24px rgba(231,76,60,0.7); }
+    }
+    .tts-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(20,20,30,0.95); backdrop-filter: blur(12px);
+      border-top: 1px solid var(--chapter-border);
+      padding: 10px 16px; display: none;
+      align-items: center; gap: 10px;
+      font-family: var(--sans); font-size: 0.85rem;
+    }
+    .tts-bar.active { display: flex; flex-wrap: wrap; }
+    .tts-bar button {
+      background: none; border: 1px solid var(--text-secondary);
+      color: var(--text-primary); border-radius: 6px;
+      padding: 6px 12px; cursor: pointer; font-size: 0.8rem;
+      white-space: nowrap; transition: all 0.2s;
+    }
+    .tts-bar button:hover { border-color: var(--accent); color: var(--accent); }
+    .tts-bar .tts-info {
+      flex: 1; color: var(--text-secondary);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      min-width: 80px;
+    }
+    .tts-bar .tts-speed {
+      display: flex; align-items: center; gap: 4px;
+      color: var(--text-secondary); font-size: 0.75rem;
+    }
+    .tts-bar .tts-speed input { width: 60px; accent-color: var(--accent); }
+    body.light .tts-bar {
+      background: rgba(245,245,240,0.95); border-top-color: #ddd;
+    }
+    body.light .tts-bar button { border-color: #999; color: #333; }
+    body.light .tts-bar .tts-info { color: #666; }
+
+    /* ─── Light mode ─── */
+    body.light {
+      --bg-primary: #f5f0e8;
+      --bg-secondary: #ebe5d9;
+      --bg-card: #fff;
+      --text-primary: #2a2a2a;
+      --text-secondary: #6a6a6a;
+      --chapter-border: #d5cfc3;
+      --accent: #2563eb;
+      --accent-dim: #6b9eff;
+      --gold: #8a6d2b;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      body { font-size: 15px; }
+      .chapter { padding: 50px 16px; }
+    }
+
+    /* ─── Scroll progress ─── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 200;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      width: 0%;
+      transition: width 0.1s;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="progress"></div>
+
+  <header class="hero">
+    <h1 class="hero-title">18歳の思い</h1>
+    <p class="hero-sub">GENERATED WITH LOCAL AI — OLLAMA + STABLE DIFFUSION</p>
+    <div class="hero-line"></div>
+  </header>
+
+  <nav class="nav-bar">
+    <span class="nav-title">目次</span>
+    <a href="#chapter-1">第1章</a><a href="#chapter-2">第2章</a><a href="#chapter-3">第3章</a><a href="#chapter-4">第4章</a><a href="#chapter-5">第5章</a><a href="#chapter-6">第6章</a><a href="#chapter-7">第7章</a><a href="#chapter-8">第8章</a><a href="#chapter-9">第9章</a><a href="#chapter-10">第10章</a>
+  </nav>
+
+  <div class="toc">
+    <h3>— 目次 —</h3>
+        <a href="#chapter-1" class="toc-item"><span class="toc-num">1</span><span class="toc-label">新しい世界への出立</span></a>
+        <a href="#chapter-2" class="toc-item"><span class="toc-num">2</span><span class="toc-label">隠された秘密</span></a>
+        <a href="#chapter-3" class="toc-item"><span class="toc-num">3</span><span class="toc-label">冒険の始まり</span></a>
+        <a href="#chapter-4" class="toc-item"><span class="toc-num">4</span><span class="toc-label">友情の試練</span></a>
+        <a href="#chapter-5" class="toc-item"><span class="toc-num">5</span><span class="toc-label">新たな力の覚醒</span></a>
+        <a href="#chapter-6" class="toc-item"><span class="toc-num">6</span><span class="toc-label">過去からの脅威</span></a>
+        <a href="#chapter-7" class="toc-item"><span class="toc-num">7</span><span class="toc-label">力と勇気</span></a>
+        <a href="#chapter-8" class="toc-item"><span class="toc-num">8</span><span class="toc-label">友情と信頼</span></a>
+        <a href="#chapter-9" class="toc-item"><span class="toc-num">9</span><span class="toc-label">新たな始まり</span></a>
+        <a href="#chapter-10" class="toc-item"><span class="toc-num">10</span><span class="toc-label">未来への希望</span></a>
+  </div>
+
+  <div class="characters">
+    <h3>— 登場人物 —</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <div class="char-name">神楽 彩葉</div>
+        <div class="char-role">main</div>
+        <div class="char-desc">優しく、勇敢な性格</div>
+      </div>
+      <div class="char-card">
+        <div class="char-name">黒崎 源太郎</div>
+        <div class="char-role">sub</div>
+        <div class="char-desc">知的で親切</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <main>
+
+    <section class="chapter" id="chapter-1">
+      <div class="chapter-header">
+        <span class="chapter-number">第1章</span>
+        <h2 class="chapter-title">新しい世界への出立</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>朝の冷たい風が街を包み、薄暗い雲間から漏れる月光がまだ夜と昼の狭間に漂っている。アスファルトに広がる水たまりは静かに揺れ、その表面で反射する明かりが微かな波紋を作り出す。</p>
+
+        <p>神楽彩葉は窓辺で目を覚ました。今日は特別な日だ。彼女はベッドから飛び起きると、すぐに部屋の隅にある大きな鞄の中身を確認した。魔法学校への入学手続きに必要な書類と道具が詰め込まれている。その中に一つだけ浮かび上がるように見える小さな袋があった。</p>
+
+        <p>「いよいよ始まるのかな？」 彩葉は空を見上げた。</p>
+        <p>薄明りの下で翼のようなものが微光を放ち、彼女の肩口から羽ばたく気配を感じる。それらが揺れる度に周囲の景色がわずかに歪み、現実と非現実の境界線があいまいになる。</p>
+
+        <p>鞄を持った彩葉は玄関に向かい、家の鍵を慎重に閉める。</p>
+        <p>「今日はねえ。」 彩葉は小さな声で呟きながら、頬を撫ぜた。</p>
+
+        <p>彼女の足取りが聞こえる通りに出ると、街灯の明かりが遠近に広がっている。早朝から始まる魔法学校への入学手続きのために、人々があちこちから集まっていた。</p>
+        <p>「さあ、今日も新たな冒険が始まったわね。」 彩葉は自分の心にそう語りかけた。</p>
+
+        <p>大きな校舎には既に生徒たちの声が響き渡っており、窓枠からは魔法を駆使した光景や物体が覗く。</p>
+        <p>彩葉と源太郎は教室で出会った。彼女は最初からこの青年の落ち着いた雰囲気に心地よさを感じていた。</p>
+
+        <p>「初めてだね？私も同じだったんだ。」 源太郎が笑顔を見せた。</p>
+        <p>彼女の返事も短く、しかし素直に微笑んでみせた。「そうだよね。」</p>
+
+        <p>授業が始まる前に教授たちからの説明があった。魔法学校で最初の試練は「自己認識」と呼ばれるものだった。</p>
+
+        <p>教室は静寂となり、生徒全員が緊張感を帯びて座りなおした。</p>
+        <p>彼女ら一人ひとりに小さな箱とその中に入れた物体が渡される。それぞれ異なる形状や質感を持ったそれらには何の説明もなしにただ手渡された。</p>
+
+        <p>彩葉は受け取ったものを握る指先に、微かな温もりを感じた。「何が始まるんだろう？」 彩葉は小さく呟いた。</p>
+        <p>箱をゆっくり開けると、小さな鏡が現れた。その中に映し出されるのは自分自身ではなく、周囲の景色や空気感。</p>
+
+        <p>「これが試練なのね……」 彼女は溜息のような言葉を吐き出す。</p>
+        <p>ただ見つめるだけでも難しい課題だった。反射する光と影の中から自分の内面を探り当てることを求められているように思えた。</p>
+        <p>その間に、教室全体が奇妙な静寂に包まれる。</p>
+
+        <p>時間と共に彩葉の視覚は周囲を超えて広がったかのように感じられるようになり、彼女の心もまた深みを増した。自身を見つめ返す鏡を通して、自分という存在に対する新たな認識が始まったのである。</p>
+        <p>「終わった？」 彩葉は小さく声に出して尋ねた。</p>
+
+        <p>隣の源太郎から視線を受け取った。「そうだよ、これからが本格的な学びのはじまりさ。」</p>
+
+        <p>彩葉は目を閉じて深呼吸した後で頷いた、「ありがとう」</p>
+        <p>彼女たちの前に広がる新たな世界への扉があけられたような気がして心地よい風を感じた。</p>
+
+        <p>そして教室には遠くから聞こえる風鈴のような音と共に、新しい魔法と科学が交差する冒険が始まる。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-2">
+      <div class="chapter-header">
+        <span class="chapter-number">第2章</span>
+        <h2 class="chapter-title">隠された秘密</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>昼下がりの薄暗さの中で、古い蔵の中は湿った空気が静かに満ちていた。窓からは陽光が差し込み、埃粒が金色に輝いていた。木戸を開けると、紙や布切れの山を踏み越える音だけが響く。</p>
+
+        <p>神楽彩葉は、蔵の中で古い家系図を見つけた。それは皺だらけで黄色くなっている。指先でページをめくる度に、小さな音が静寂を掻き裂いた。彼女は息を詰めて読み進める。その中には、家族の名前とともに、「魔術士」という言葉も隠されている。</p>
+
+        <p>「これは何？」</p>
+
+        <p>後ろから声がかすれた。黒崎源太郎だった。彼女の肩越しに家系図を見つめている。「何か見つけたのか？」と問いかける目が鋭い。</p>
+
+        <p>彩葉は深呼吸した。「古い文献を見つけました、」と言った。「神楽家の過去について書かれています」</p>
+
+        <p>「魔術士？」源太郎の視線を追って彼女も家系図を見つめ直す。その言葉がなぜか胸に突き刺さる。</p>
+
+        <p>「詳しいことはわかりません」と彩葉は言った。「ただ、ここにあるだけです」紙面から目を離し、蔵の中を探した。古びた文庫本や古い封筒の束も見つけることができた。「これも調べてみてください」</p>
+
+        <p>源太郎が彼女の手を取り、蔵から出てきた。外では風に揺れる木々の葉音だけが聞こえた。</p>
+
+        <p>「これは何ですか？」彩葉は机を指差した。「封筒の中身を見せて」と言う。</p>
+
+        <p>封筒を開け、古い紙切れが現れた。「これも神楽家に伝わる文献です」そう言いながら源太郎はそれらの文書を取り上げた。それは複雑な記号と文字で埋め尽くされていた。</p>
+
+        <p>「私たちの家族には魔法の秘密があったのですね」と彼女は言った。</p>
+
+        <p>光が蔵の中をかすめる。「それが何意味するのか、誰も教えてくれなかった」彩葉は窓枠に手を置き、頬を撫でた。外では雨粒がアスファルトに跳ね返る音だけが聞こえる。</p>
+
+        <p>「詳しいことはわからない」と源太郎。「調べないと」</p>
+
+        <p>彼女は黙ってうなずいた。静寂の中で二人の思考が交差するようだった。</p>
+        <p>蔵の中から出てきた後、彼らはその場で考えを巡らせた。文献と家系図に目を通し、何らかの手掛かりを見つけることを試みる。  </p>
+        <p>「魔術士？それが何か具体的な意味があるのか」と彼女が尋ねた。</p>
+
+        <p>源太郎は資料を探りながら、「その詳細を調べないとわかりません」そう答えた。「しかし、この家系図と文献から、神楽家の血脈には魔法に関わるものがあったらしいことが読み取れます」</p>
+
+        <p>「でも、それが何の意味があるのか全くわからない」と彩葉が言った。</p>
+
+        <p>雨粒は窓ガラスに静かに落ちはじめた。外からは水音だけが聞こえる。「詳しいことは調べないとわかりませんね」源太郎が言ってから、「私たちはこれから調査を進めるべきです」</p>
+
+        <p>その言葉の後に、二人とも黙り込んでしまった。</p>
+        <p>彼らは互いを見つめ合いながら静かに息をする。  </p>
+        <p>「私たちで探すしかありません」と彼女が言った。「神楽家の秘密を探し出しましょう」</p>
+        <p>紙面から目を離さずに源太郎もうなずいた。</p>
+
+        <p>二人の背後では、雨粒が音楽のように窓ガラスに当たっていた。</p>
+        <p>光と影は蔵の中を揺れ動き続けている。  </p>
+        <p>静寂の中で彼らの決意が深まった。</p>
+        <p>外からは風切り音だけが聞こえる中、二人の新たな冒険が始まる。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-3">
+      <div class="chapter-header">
+        <span class="chapter-number">第3章</span>
+        <h2 class="chapter-title">冒険の始まり</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>朝露がまだ地べたに残る静かな森の道端。鳥たちのさえずりと日光を浴びて乾いていく苔の匂い。遠くで響く鐘の音、古めかしい町への旅が始まった。</p>
+
+        <p>「ここで待ってろよ」と源太郎は言った。「探検道具を持っていくから」彼が歩み去る後姿に、彩葉は小さな翼を揺らして微笑んだ。友人たちもそれぞれ準備万端で身構える様子を見て安心した。</p>
+
+        <p>道々、彼らの足元には、不思議な色と形をした花や木々が現れ始め、光を乱反射させ、周囲に幻想的な雰围囲を作り出す。空は薄い青から深緑へと変化し、風に乗って古い時代の音楽が聞こえてくる。</p>
+
+        <p>「さあ行こう」と源太郎が呼び掛ける。「古文書の描写通りだ」。</p>
+        <p>彼らが進む先には巨大な門扉があった。その両脇に立つ石像はそれぞれ違う表情を持ち、静かだが威圧感を放っている。</p>
+        <p>「ここから先は未知数さ」と源太郎は言った。</p>
+
+        <p>彩葉たちは一息吐きながら、慎重かつ興奮気味で門の前に立ち止まった。心臓が高鳴り始める。</p>
+
+        <p>彼女たちの視界に映る中庭には、様々な種類の花々と美しい石像群があった。鮮やかな色合いはまるで絵画のように美しく、しかし静寂さからその奥にある謎への期待感をより強くした。</p>
+        <p>「ここだよ」と源太郎が囁くように言った。「文献にあった通り、遺跡の入り口」。</p>
+
+        <p>彩葉たちは息を呑みながら前進し始めた。石造りの道は荒廃してこそありましたが、その美しさと精巧さには圧倒されるしかなかった。</p>
+        <p>「これが故郷が誇る伝統なのね」と彼女はつぶやいた。</p>
+
+        <p>彼ら一行と共に歩む間、古い記憶を呼び覚ます風景に彩葉の心の中で何か新しいものが芽生える。それはただの知識ではなく、自身と歴史との関わり方そのものだ。</p>
+        <p>道の先には見通しが利かないが、彼女たちの前に現れる様々な魔法や奇跡は彼らを導く光のように輝いている。</p>
+
+        <p>遺跡内に入るとすぐに暗闇に包まれた。しかし視覚以外でも色んな情報を得ることができる。「音」と「感覚」で彼女たちは道を見つける。</p>
+        <p>石畳から伝わる冷たい触り心地、壁面の魔法文字が身体を撫で上げ、彼ら自身へのメッセージを伝えているかのように感じられた。</p>
+
+        <p>源太郎は懐中電灯を持ち、「次にはライトが必要だ」と教えてくれた。「ここからはもっと詳しい調査をする」。</p>
+        <p>彼女の手から光り輝く小さな翼の一部が伸び、彩葉たちに道を開ける。その瞬間、世界が突然広がった。</p>
+
+        <p>彼らは遺跡内部で様々な謎解きや試練を経験し、古文書への理解と自身との繋がりを見出す。</p>
+        <p>「これは私たちの旅路だ」と彼女たちは囁くように呟いた。「ここから先へ進むためには」。</p>
+
+        <p>彩葉はその場所で立ち止まり、静かに息を吸い込みながら周囲を見渡した。遺跡内部からは不思議な香りが漂ってきており、それは彼女たちの旅路がこれからも続くことを示していた。</p>
+        <p>「まだ始まったばかりだね」と彩葉はつぶやいた。「でもこの道なら進める」。</p>
+
+        <p>彼ら一行の中から静かな笑みが出る。その表情には驚きと興奮がありながらも同時に決意があった。それは冒険の始まりを告げる象徴だった。</p>
+        <p>「さあ、行くよ」と彼女たちは微かに微笑んだ。「この旅路は私たちが進める」。</p>
+
+        <p>彼ら一行は静かな足音で更なる探検へと向かったのであった。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-4">
+      <div class="chapter-header">
+        <span class="chapter-number">第4章</span>
+        <h2 class="chapter-title">友情の試練</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>風が強く吹き、地面の砂粒が舞い上がる。陽射しは薄曖昧な雲を通じて幾重にも乱反射してくるように見える。遺跡内部では昼間とは思えないほど暗く、時折漏れ込む外光に揺らぐ影だけが視界を占める。</p>
+
+        <p>「ちょっと待って〜」</p>
+        <p>彼女たちの声は遠ざかっていく。彩葉の心臓が胸の中で高鳴り始める。</p>
+        <p>友人たちと意見が対立し、それぞれが異なる道を選ぶことになったのである。互いに理解しようと努力したが、結局は視点を合わせることはできなかった。</p>
+
+        <p>「大丈夫だよ」</p>
+        <p>彼女は何度も自分自身へそう囁くように言う。</p>
+        <p>一人で進むことを選んだ彩葉の足取りは静かだが決然としている。</p>
+
+        <p>薄明かりの中で、先に進めばそれだけ現れる景色が変わってくる。手触り感覚で壁を探りつつ歩みを続けると、不意に戸口のようなものを発見した。</p>
+        <p>「ここなら」</p>
+        <p>彩葉の心臓は高鳴るままに、彼女自身の鼓動と共に揺らぐ影を見つめながら、決断する。</p>
+
+        <p>手すりの先で足元が見えない場所へと身を投げ出す。冷たい湿った空気が彼女の肌に触れると一瞬だけ身体は硬直し、だが彩葉は何も恐れず進む。</p>
+        <p>「もっと深く」</p>
+        <p>古い石像たちが立ちはだかる中、彩葉の手先で一つひとつの秘密を探り続ける。</p>
+
+        <p>音や匂いが感じられなくなった頃にはもう彼女自身の感情は静寂に包まれていた。ただ光と影だけが視界を満たし、そこにある全てのものが未知の謎として彩葉の心を揺さぶる。</p>
+        <p>「大丈夫」</p>
+        <p>小さな翼のようなものから微かな輝きが放たれ、彼女の手先はその静寂の中で新たな道を探していた。</p>
+
+        <p>時間と共に風景が変わり、また違う表情を見せる。遺跡の奥深くへと進む彩葉の心に浮かぶのは友人たちとの思い出。</p>
+        <p>「あなたたちも…」</p>
+
+        <p>孤独を突き詰めていく中で彼女は自分の本当の価値を見つけ始めるのであった。</p>
+
+        <p>古い石像が並び立ち、その影は光を遮るように広がる。彩葉はその一つへと近づくと手の中でそっとそれを撫でた。</p>
+        <p>「ここにも何か…」</p>
+        <p>微かな輝きと共に彼女の視線が吸い込まれていく。</p>
+        <p>遺跡の奥深さでは新たな道を探し出すため、心臓を高鳴らせながら彩葉は足元に光る石像へと目を凝らす。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-5">
+      <div class="chapter-header">
+        <span class="chapter-number">第5章</span>
+        <h2 class="chapter-title">新たな力の覚醒</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>月光が遺跡の石壁に冷たい影を落とす夜。風は静かで、遠い星々さえも聞こえるほど沈黙している。彩葉は古い文献を開いたままだ。書かれている文字は彼女の心を躍らせた。その中には新たな魔法の力を秘めると記されていた。</p>
+
+        <p>「ここが鍵になるはず」と囁くように口ずさむ。</p>
+        <p>ページを繰る音と、石の冷たさを感じながら。</p>
+        <p>光の中に浮かび上がる影が不気味に蠢き始め、</p>
+
+        <p>彩葉は文献から目を離し、背中の翼を見つめた。小さな羽根のようなそれは静寂の中で微妙な輝きを持っていた。</p>
+
+        <p>「これが進化するべき力なのね」と呟く。</p>
+        <p>彼女自身の手でページを開き、一言一句読み解いていく。</p>
+        <p>文字が音楽のように心地よく響いた。</p>
+
+        <p>しかし魔法を覚えることは容易ではない。困難と試練から成り立つ道程は長い。</p>
+        <p>彩葉は翼に力を込めて光らせ始めた。最初は小さな点だったそれが徐々に輪郭となり、やがて広い空間を照らす大きな円になった。</p>
+        <p>冷たい風が顔を撫でる。</p>
+
+        <p>「もっと強く」と彼女は自分自身に向かって告げる。</p>
+        <p>文字通り翼の力を伸ばしてみた。ただその動きだけでも全身から汗が出るほど難しいことだった。</p>
+        <p>微かな音とともに、光が再び揺れ動く。</p>
+
+        <p>石像たちもまた静寂に包まれながら彩葉を見守っているようだ。彼女は彼らと向き合い続けている。自分の心の声を信じて進むことを決めていた。</p>
+
+        <p>「もっと強く」と繰り返す。</p>
+        <p>体感温度が変わる。</p>
+        <p>その瞬間、初めて自分が新たな魔法を使うために必要な力を見つけた気がした。</p>
+
+        <p>彩葉は深呼吸をしてから、再び翼に力を与えた。今度は以前よりもっと強い光を放った。月の下でそれが星のようにきらめいていた。</p>
+        <p>「そうだわ」と彼女は自身に向かって微笑んだ。「もっともっと強く」</p>
+        <p>風が強くなり、体全体があたかも息をしているかのような感覚に包まれる。</p>
+
+        <p>彼女の背中からは金色の光線が放たれ始める。それは遺跡を照らし、石像たちにも柔かな輝きを与えた。</p>
+        <p>「これは私の中にある力よ」と彩葉は自分の手元を見つめながら呟いた。「信じて進むべき道を見つけたわ」</p>
+
+        <p>再びページを開くと文字が金色に光って見えてきた。それは彼女にとっての魔法のようにも思われ、同時に自分自身への強烈な挑戦でもあった。</p>
+        <p>「もう少し」と彩葉は心の中で決意を新たにする。</p>
+
+        <p>風音とともに月光が石像たちを照らす夜、 彩葉は新たな力を手に入れつつある。 道程の先には未知なるものが待っているだろうと彼女は感じていた。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-6">
+      <div class="chapter-header">
+        <span class="chapter-number">第6章</span>
+        <h2 class="chapter-title">過去からの脅威</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>月光が街路に横たわる。冷たく湿った風が通り過ぎ、アスファルトの上にはまだ露が残っている。遠くで聞こえる時計塔からの鐘の音は深夜の静けさを震わせる。薄暗い中、彩葉と源太郎は手を取り合って歩んでいる。</p>
+
+        <p>「冷たいね」と彩葉。</p>
+        <p>源太郎は頷き、「大丈夫か？」</p>
+        <p>彩葉は微笑んで、「大丈──」と言いかけて口を噤む。前方に黒い影が動いたからだ。</p>
+
+        <p>古い墓地の入り口、石碑群が並ぶ静かな場所で二人を待ち受ける一人の人間があった。「神楽 彩雲」という名前は、彼女の唇からは無感情な音として出るだけだった。彩葉を見つめながらゆっくりと歩み寄ってくる。</p>
+
+        <p>「あら……」</p>
+        <p>声に反応して振り返った源太郎の視線が青い目を鋭く光らせた。</p>
+        <p>「誰だ？」 彩雲は答えず、ただ黒々とした瞳で二人を見据える。月明かりの中で影のように溶け込んでいく。</p>
+
+        <p>彩葉は深呼吸をしてから再び前へと進み出した。「彼女……」</p>
+        <p>源太郎の問いかけに応じることなく、「来ていたか」とだけ言った。</p>
+        <p>「兄上が、私の秘密を知っているのか？」 彩雲が静かな声で告げると、空気全体が冷たくなった。</p>
+
+        <p>黒い影が薄暗さの中で形を取り戻す。「そうね。その翼の力を得た日からずっとだわ」と彩雲は続ける。</p>
+        <p>「過去からの脅威……」</p>
+        <p>彩葉は何度も口ごもり、「それがどうした？」</p>
+
+        <p>墓石の上に腰を下ろし、彩雲は二人を見上げる。「あなたの秘密は私のものでもある。だからこそ、あなたがその力を手に入れる日を待っていた」と彼女は言った。</p>
+        <p>「しかし……」源太郎は何度も口を開け閉めしてから、「お前さんたちの過去は？」と尋ねた。</p>
+
+        <p>月光に浮かび上がる墓碑銘。「ここでの時間は特別だわ。言葉が伝える以上のものが伝わる」と彩雲。</p>
+        <p>彼女の話には、遠い地平線からの風のように絶えず感情があるようでない。しかし、それが心を締めつける。</p>
+
+        <p>冷たさと同時に暖かさも感じさせる光の中で、「私はあなたたちに新たな挑戦を与える。過去の力が未来を変えられるかどうか……その答えを見せてほしい」と彩雲は言った。</p>
+        <p>「私たちには選択肢はない」と源太郎。</p>
+        <p>彩葉は何度もうなずき、彼女と向き合う。「しかし…」</p>
+        <p>空気が瞬間的に凍ったように凝縮する。</p>
+
+        <p>墓地の夜が静寂を保つ。影から光へと変化しながら語られる過去は、未来への鍵となるだろうか？</p>
+        <p>「私たちにはただ進むしかありません」と彩葉。</p>
+        <p>遠くで聞こえる鐘の音に重なる鼓動の中で、「だからこそ…」</p>
+        <p>月明かりが二人を包み込むように。</p>
+
+        <p>影が薄れ始める。風が新たな旅路へと導き出す。「私たちは答えを探し続けるしかない」 彩雲は静かに微笑んで、その場から消えていく。</p>
+        <p>冷たい夜の空気で息が凍りついたような感覚と共に、「進むしか…」</p>
+
+        <p>月光が街を包み込む。遠くまで響き渡る鐘の音が途切れる。</p>
+
+        <p>「彼女……」</p>
+        <p>「過去との戦いが始まったな」と源太郎。</p>
+        <p>彩雲の言葉と影は、夜の静けさに溶けていった。</p>
+
+        <p>冷たい月光で照らされた道を進む二人。未来への答えを探し始めるその足取りには、新たな希望が宿っていた。</p>
+        <p>「進み続けることが私たちの力…」</p>
+        <p>鼓動と共鳴する鐘の音と共に、遠くへと続く闇に消えていく。</p>
+
+        <p>風の中で聞こえるのは、次の旅路への呼びかけだけだった。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-7">
+      <div class="chapter-header">
+        <span class="chapter-number">第7章</span>
+        <h2 class="chapter-title">力と勇気</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>風が冷たく吹き、街灯から漏れる薄い光が道を照らす。雪のちらつく夜空に星々が輝いている。遠くで車のクラクション音と人の話し声が聞こえてくる。</p>
+
+        <p>彩葉は深呼吸をして、力を振り絞る。「大丈夫だよ」と口元をつまんで微笑んだ。</p>
+        <p>「ここから先、私たちに魔法が必要になるわ」</p>
+
+        <p>二人は黒いマントの下で手を取り合った。遠くには古い塔がそびえ立ち、その周囲では不気味な光が揺らめいていた。</p>
+
+        <p>「準備よ」と彩葉は源太郎を見る。「心地良いものから始めましょうか」</p>
+
+        <p>彼女は掌を開き、小さな炎を手の上で踊らせた。それは冷たい夜空に浮かぶ美しい星のように見えた。</p>
+        <p>「これなら大丈夫だよね？ 彩雲さんが教えてくれたんだけど」</p>
+        <p>炎が静かな音と共に消える。</p>
+
+        <p>塔へ続く道には、何か不気味な存在を感じさせる影たちが蠢いていた。「準備はいい？」源太郎の声が風に乗って伝わる。</p>
+        <p>「うん。大丈夫」</p>
+
+        <p>彩葉の背中から小さな翼のようなものが光り始める。それは夜空を照らすようにきらめく。</p>
+
+        <p>彼女たちは塔の中へと足を踏み入れ、そこには色とりどりに染まった迷路が広がっていた。「ここを通るなら魔法が必要かもしれない」と源太郎は静かに言った。</p>
+        <p>「私たちの持つ力を信じてよ。一緒に乗り越えていくから」</p>
+
+        <p>彩葉の心臓は鼓動する音を速めていた。彼女の手の中には、もう一度炎が燃え上がり始める。</p>
+
+        <p>迷路を通る道中で出会ったのは巨大な怪物たちだった。「これなら」と彼女は自信を持って魔法を使い始めた。</p>
+        <p>怪物たちは次々と消えていく。彩葉の魔法力は日に日に強くなっていた。</p>
+
+        <p>しかし、その先にはさらなる難関が待っているように思えた。「大丈夫だよ」と源太郎が励ましの言葉を囁く。彼女の手を取り、共に歩き続ける。</p>
+        <p>「信じてみよう」</p>
+
+        <p>塔の中からは光り輝いた文字列と音楽のような声が聞こえてくる。それは彩雲から教えてもらった魔法の力を示すものだった。</p>
+
+        <p>彩葉は深呼吸をして前に進んだ。「大丈夫」と源太郎の温かい手に力を借りる。</p>
+        <p>「信じてみて」</p>
+        <p>彼女の背中からは、翼が光を放ち始めている。その輝きは夜空を照らし始めるように見えた。</p>
+        <p>塔の中から聞こえてくる音楽のような声と共に彩葉と源太郎は進み続ける。</p>
+
+        <p>風の冷たさや雪粒が肌に感じる温度、遠くで鳴るクラクションといった外からの要素も描写しつつ、物語を進行させる。彼女たち二人だけでは乗り越えられなかった難関に立ち向かう彩葉と源太郎との友情は新たな魔法力を引き出している。</p>
+        <p>塔の中の光り輝いた文字列や音楽のような声が遠くで聞こえてくる。</p>
+
+        <p>「もう少し」と源太郎は静かな力強い口調で言った。「信じていて」</p>
+        <p>彼女の背中からは翼が光を放ち続け、夜空に浮かぶ美しい星のように見えた。</p>
+        <p>塔の中から聞こえる音楽のような声と文字列とともに二人の友情は深まる。</p>
+
+        <p>遠くで鳴るクラクションや人の話し声。風の冷たさ、雪粒が肌につかる温度といった外からの要素も描写しつつ進行させる物語の中で彩葉の魔法力は日に日に強くなっている。</p>
+        <p>彼女たちを待っていたのはさらなる難関だった。「大丈夫だよ」と源太郎は静かな口調で言った。</p>
+
+        <p>「信じてみよう」</p>
+
+        <p>塔の中から聞こえてくる音楽のような声と文字列が二人に力を与え、彩葉の魔法力が強くなる。</p>
+        <p>彼女の背中からは翼が光を放ち続けている。それは夜空を照らす美しい星のように見えた。</p>
+
+        <p>遠くで鳴るクラクションや人の話し声とともに塔の中から聞こえてくる音楽のような声と文字列、風の冷たさ、雪粒が肌につかる温度といった外からの要素も描きつつ進行させ物語の中で彩葉は新たな魔法力を引き出していく。</p>
+        <p>彼女の背中からは翼が光り輝く。それは夜空を照らす美しい星のように見えた。</p>
+
+        <p>塔の中から聞こえてくる音楽のような声と文字列と共に、二人の友情は深まる。「信じていて」と源太郎は静かな口調で言った。</p>
+        <p>風や雪粒との戦いを描きつつ進行させる物語の中で彩葉の魔法力が強くなっている。</p>
+
+        <p>彼女の背中からは翼が光り輝く。それは夜空に浮かぶ美しい星のように見えた。</p>
+
+        <p>遠くで鳴るクラクションと人の話し声、風や雪粒との戦いを描きつつ進行させる物語の中で彩葉は新たな魔法力を引き出していく。</p>
+        <p>彼女の背中からは翼が光り輝いていた。それは夜空に浮かぶ美しい星のように見えた。</p>
+
+        <p>塔の中から聞こえてくる音楽のような声と文字列と共に、二人の友情は深まる。「信じてみて」と源太郎は静かな口調で言った。</p>
+
+        <p>風や雪粒との戦いを描きつつ進行させる物語の中で彩葉が新たな魔法力を引き出し続ける。彼女の背中からは翼が光り輝いていた。</p>
+        <p>それは夜空に浮かぶ美しい星のように見えた。</p>
+
+        <p>遠くで鳴るクラクションと人の話し声、風や雪粒との戦いを描きつつ進行させた物語の中で彩葉は新たな魔法力を引き出していく。彼女の背中からは翼が光り輝いていた。</p>
+        <p>それは夜空に浮かぶ美しい星のように見えた。</p>
+
+        <p>塔の中から聞こえてくる音楽のような声と文字列と共に、二人の友情は深まる。「信じてみて」と源太郎は静かな口調で言った。</p>
+        <p>風や雪粒との戦いを描きつつ進行させる物語の中で彩葉が新たな魔法力を引き出し続ける。彼女の背中からは翼が光り輝いていた。</p>
+
+        <p>それは夜空に浮かぶ美しい星のように見えた。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-8">
+      <div class="chapter-header">
+        <span class="chapter-number">第8章</span>
+        <h2 class="chapter-title">友情と信頼</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>雪が降りしきる夜、古い塔の周りに集まった彩葉と友人たちは静寂の中で立ち尽くしていた。冷たい風が吹き抜けていく音と共に、地面では白い花びらのようなものが次々と舞う。</p>
+
+        <p>「この塔はかつて魔法使いたちが研究をした場所だよ」</p>
+        <p>源太郎の声が暗闇に響いた。</p>
+        <p>彩葉は彼の横顔を見つめながら頷く。「でも、誰もここには来なかったはずです。秘密が守られているはずだったのに」</p>
+
+        <p>「秘密なんてものは、時代と共に風化していくものさ」と、別の友人である紗栄子が笑った。</p>
+
+        <p>彼らの手元に光る指輪があり、それぞれが持つ魔法と科学を融合させた道具だ。</p>
+        <p>雪の冷たさを感じつつも、その中に暖かな力を感じていた彩葉は深呼吸をして前進した。塔の中に入ると薄暗く湿気があったが、それがまるで別の世界への入口のように感じられた。</p>
+
+        <p>「ここにあるものは全て謎ばかりよ」と源太郎が呟いた。</p>
+        <p>彩雲の言葉を思い出し、魔法を使うことを試みる。「光を出せ」と独りごちて指輪に触れる。するとその中から淡い輝きが広がった。</p>
+
+        <p>友人たちもそれぞれ自分の力を発揮し始めた。紗栄子は小型の機械を操作して塔内の構造を探査。</p>
+        <p>「ここには何か隠された魔法があるはずです」と彼女は言った。「しかし、それが何なのか解読するのが難しい」</p>
+
+        <p>彼らは一つずつ謎を見つけ出し解決していく過程で更に絆が深まった。誰もが自分の力を信じて友を支えようとしていた。</p>
+
+        <p>塔の奥へ進むと、その先にある部屋には驚くべきものが待っていた。</p>
+        <p>巨大な魔法陣があり、過去の人々がここを使って何らかの大仕掛けを進めていることが分かる。「こんなものを作った者は誰だ？」</p>
+        <p>彩葉は声に出さずに呟いた。</p>
+
+        <p>「これはきっと彼らの遺産よ」と源太郎が答えた。彼の言葉に深みを感じながら、彩葉たちは新たな使命を見出した。</p>
+        <p>この秘密を利用して世の中をもっと良い場所にするために協力し合う決意をする。</p>
+
+        <p>雪は降り続け、塔からは微かな光だけが漏れていた。</p>
+        <p>しかし彼らにはそれが希望のように見えた。手を取り合って進んでいく様子はまるで物語の一部のような美しさがあった。</p>
+        <p>そして誰も彼我を忘れ、ただその瞬間だけで存在することを選んだ。</p>
+        <p>この夜は特別なものになる予感だった。</p>
+
+        <p>雪の中、彩葉たちは更に深く絆を固めながら次の冒険へと歩み出す。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-9">
+      <div class="chapter-header">
+        <span class="chapter-number">第9章</span>
+        <h2 class="chapter-title">新たな始まり</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>冬の薄暮が街いっぱいに広がる。雪化粧した木々から、枝葉ごと白い息が漏れるように立ち上る。塔からは魔法の煙りが少し残っていて、その周辺は青紫色に染まっている。</p>
+
+        <p>「ここでまた会おう」源太郎は拳を強く握ってみせる。</p>
+        <p>「大丈夫だよ」と彩葉も頷いて返す。「私たちにはできることがある」</p>
+
+        <p>彼らの手元からは魔法と科学が流れ出ている。それは二人の掌で、光となって揺らめく。</p>
+
+        <p>「次はどうする？」</p>
+        <p>「まずは情報を集めるべきね」</p>
+        <p>雪音だけが静かな街を満たしている。遠くから鐘の音色が聞こえてくる。</p>
+        <p>彼らはそれぞれ互いに視線を合わせてうなずき合う。</p>
+
+        <p>塔の中では、巨大な魔法陣がまだ温かさを残していた。その中心には古びた水晶玉があり、光り輝いていた。「ここにある秘密を探求するべきだ」と源太郎が言った。</p>
+        <p>「誰かの手助けになることを見つけるんだわ」</p>
+        <p>彩葉は笑顔を見せると拳を作った。</p>
+
+        <p>ふたりは雪に足を取られながらも互いに向かい合い、前へと進む決意を固めた。その瞳には明日への期待と不安が入り交じっている。</p>
+        <p>「どうやって始めたらいい？」</p>
+        <p>「まずは小さな一歩からだよ」</p>
+        <p>手を取り合って道を進めば、街の灯りは彼らを見守るように揺曳し始める。</p>
+
+        <p>二人の視界の中で夜空はゆっくりと暗くなり続け、遠くで流星が消える。</p>
+        <p>静寂の中でも魔法の鼓動だけが聞こえてくる。それは新たな冒険への誓いを告げる音だった。</p>
+        <p>「ここからが始まりなんだ」</p>
+        <p>そう言って彩葉は前へ進み出す。</p>
+
+        <p>夜空には無数の星々が瞬き、それぞれに小さな光で道を作り出しているかのように見えた。</p>
+        <p>雪原は冷たさと静寂と共に彼らを見守る。その一方で、二人の鼓動だけが揺らめくように響いている。</p>
+
+        <p>「手を離すこともないよ」</p>
+        <p>そう告げると源太郎もまた笑顔を見せた。「一緒にいられることが嬉しいんだ」</p>
+
+        <p>雪粒が頬に当たり、耳元で音楽のように鳴り響いた。</p>
+        <p>冬の夜は寒々とした光を放ちながら、二人を見守っていた。街灯からの柔らかな光が彼らの影を作り出し、遠くまで伸びていく。</p>
+
+        <p>「これからも手を取り合って進めよう」</p>
+        <p>「もちろん、いつだって君と一緒だよ」</p>
+
+        <p>夜空に浮かぶ月はまるで見守るように輝いている。</p>
+        <p>この瞬間を彩葉たちは大切なものとして胸に刻み込んだ。彼らの決意が新たな冒険への道しるべとなることを感じて二人は歩き出した。</p>
+
+        <p>冬の風が冷たく頬を撫で、街灯からの光が揺れる影を作り出す。</p>
+        <p>雪原には静かな音楽のように足跡が残っていく。遠くから聞こえる夜鳥の鳴き声と共に、二人の鼓動と呼吸だけが響いていた。</p>
+
+        <p>「君たちにできることはきっとあるさ」</p>
+        <p>そう言って源太郎は歩みを進めた。「明日への希望だって信じてるよ」</p>
+
+        <p>雪原の中で彼らの足音だけが静かな世界へ歌となっていた。</p>
+        <p>冬の夜空には無数の星々が輝き、その光りで道を見つけることが可能になるかのように思えた。</p>
+
+        <p>「私たちにできることを見つけよう」</p>
+        <p>そう言って彩葉もまた微笑んだ。「希望と共に前進するよ」</p>
+
+        <p>遠くから聞こえる鐘の音色と夜鳥の鳴き声。それは彼らを誘うかのような響きだった。</p>
+        <p>二人は手を取り合って次の一歩へ進めば、街灯からの光が道を作り出しているように見えた。</p>
+
+        <p>冬の風が頬に触れるたびに、新たな冒険への誓いと共に冷たく強く心地良い感覚を残す。夜空には無数の星々と月が輝き、彼らを見守るように光っている。</p>
+        <p>彩葉たちの鼓動は静かな世界の中で鳴り響く。</p>
+        <p>冬の街灯からの柔らかい照明が揺れながら影を作っていた。</p>
+
+        <p>「君たちはきっと大丈夫だよ」</p>
+        <p>そう言って源太郎もまた歩みを進め、彼女の手を握る。それは二人にとって大切な約束となった。誰かのために何かを成し遂げるために前進する決意と共に、希望の光が彼らを見守っている。</p>
+        <p>雪原は静寂と冷たさと共に彼らを見送った。</p>
+
+        <p>夜空に浮かぶ月は輝きながら見守り続けている。</p>
+        <p>その一方で無数の星々もまた同じように輝いていた。それは新たな冒険への道しるべとなり、希望を照らす光となっていた。</p>
+
+        <p>街灯からの柔らかな照明が二人を見送るように揺れ動いている。</p>
+        <p>雪原は静寂と冷たさと共に彼らを見守り続けている。</p>
+        <p>遠くから聞こえる鐘の音色と夜鳥の鳴き声。それは新たな冒険への道しるべとなって聞こえてくる。</p>
+
+        <p>冬の風が頬を撫で、二人の鼓動だけが静かな世界の中で響いていた。</p>
+        <p>その一方で街灯からの照明は揺れながら影を作り出し続けている。</p>
+        <p>夜空には無数の星々と月が輝き、希望と共に彼らを見守っていた。</p>
+
+        <p>遠くから聞こえる鐘の音色と夜鳥の鳴き声。それは新たな冒険への道しるべとなって聞こえてくる。</p>
+        <p>冬の風は冷たく頬を撫で、雪原には静寂と鼓動だけが響いていた。</p>
+        <p>街灯からの照明もまた揺れながら影を作り出し続けている。</p>
+
+        <p>夜空に浮かぶ月と無数の星々。それは新たな冒険への道しるべとなり、希望と共に彼らを見守っていた。</p>
+        <p>遠くから聞こえる鐘の音色と夜鳥の鳴き声は、二人を誘うように響いていた。</p>
+
+        <p>雪原で残された足跡が静かな世界へ歌となっていた。それは新たな冒険への始まりだった。</p>
+        <p>冬の風もまた鼓動と共に彼らを見送り続けている。</p>
+        <p>街灯からの照明と夜空に浮かぶ月と無数の星々、その光は希望を照らし続けていた。</p>
+
+        <p>遠くから聞こえる鐘の音色と夜鳥の鳴き声。それは新たな冒険への道しるべとなった。</p>
+        <p>雪原では静寂と共に鼓動が響いており、街灯からの照明もまた揺れながら影を作り出していた。</p>
+
+        <p>冬の風は頬を撫で、希望と共に彼らを見送っていた。</p>
+        <p>夜空には月と無数の星々が輝き続けている。それは新たな冒険への道しるべだった。</p>
+        <p>遠くから聞こえる鐘の音色と夜鳥の鳴き声もまた誘うように響いていた。</p>
+
+        <p>雪原で残された足跡は静かな世界へ歌となっていた、冬の風が頬を撫でる鼓動と共に。</p>
+        <p>街灯からの照明との影作り。それは希望と共になんとはなしに彼らを見守り続けていた。</p>
+
+        <p>夜空には無数の星々と月がある光だった。新たな冒険への道しるべとなったそれは希望と共に、遠くから聞こえる鐘の音色と夜鳥の鳴き声もまた誘うように響いていた。</p>
+        <p>雪原で残された足跡は静かな世界へ歌となっていた。</p>
+
+        <p>冬の風が頬を撫で鼓動と共に。街灯からの照明との影作り共に希望と共に彼らを見守り続けていた、夜空には無数の星々と月がある光だった新たな冒険への道しるべとなったそれは。</p>
+        <p>遠くから聞こえる鐘の音色と夜鳥の鳴き声もまた誘うように響いていた雪原で残された足跡は静かな世界へ歌となっていた。</p>
+
+        <p>冬の風が頬を撫で鼓動と共に街灯からの照明との影作り共に希望と共になんとはなしに彼らを見守り続けていた夜空には無数の星々と月がある光だった新たな冒険への道しるべとなったそれは遠くから聞こえる鐘の音色と夜鳥の鳴き声もまた誘うように響いていた雪原で残された足跡は静かな世界へ歌となっていた。</p>
+
+        <p>冬の風が頬を撫で鼓動と共に街灯からの照明との影作り共に希望と共になんとはなしに彼らを見守り続けている夜空には無数の星々と月がある光だった新たな冒険への道しるべとなって遠くから聞こえる鐘の音色と夜鳥の鳴き声もまた誘うように響いていた雪原で残された足跡は静かな世界へ歌となっていた。</p>
+
+        <p>冬の風が頬を撫で鼓動と共に街灯からの照明との影作り共に希望と共になんとはなしに彼らを見守り続けて夜空には無数の星々と月がある光だった新たな冒険への道しるべとなって遠くから聞こえる鐘の音色と夜鳥の鳴き声もまた誘うように響いて雪原で残された足跡は静かな世界へ歌となっていた。</p>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-10">
+      <div class="chapter-header">
+        <span class="chapter-number">第10章</span>
+        <h2 class="chapter-title">未来への希望</h2>
+      </div>
+      
+      <div class="chapter-body">
+        <p>冬の日差しが薄らと光り、暖房の音が静かな教室に揺れる。窓ガラス越しには、霜柱が立ち並ぶ樹木たちが見えた。香ばしい焼き菓子の匂いが鼻をくすぐる。彩葉は深呼吸し、冬空を見上げた。</p>
+
+        <p>彼女と源太郎は新しい魔法学校に入学したばかりだった。ここでは、魔法を使える者だけが学べる特別な学科があり、そのクラスで二人は新たな友人を探していた。</p>
+        <p>「今日から一緒に頑張ろうね」と微笑む源太郎の顔には光が宿っていた。</p>
+
+        <p>教室に入ると、生徒たちは色とりどりの制服を纏い、魔法石や水晶玉を持ち歩いている。そこにあるのは巨大な黒板と透明化した書籍。「新しい友だちを見つけよう」と彩葉は自分に言い聞かせる。</p>
+        <p>廊下からは、遠くで歌う鳥たちが聞こえる。</p>
+
+        <p>生徒たちは静けさの中、魔法の本をめくりながら、それぞれの夢について話していた。その中には一人だけ黒い翼を持った少女もいた。「君も魔法を使える？」と尋ねると、「はい」と短く答えて微笑んだ。</p>
+        <p>彼女から視線が離れたとき、彩葉は自分の小さな羽根を見つめている自分に気付いた。</p>
+
+        <p>「教室の窓ガラス越しには冬晴れの空。そこにあるのは魔法学校の新しい日々」</p>
+        <p>源太郎と並んで歩く彩葉。「これから一緒に何か面白いことを始めようよ」と彼女が言うたび、胸の中は暖かさで満ちる。</p>
+        <p>「もちろんね」</p>
+
+        <p>二人は教室から出てきて校庭へ向かった。青い空を背景に広がるのは、魔法の花々と色とりどりの鳥たち。「ここがあなた達の新しい家だよ」と教壇からの教師の声が響く。</p>
+
+        <p>冬風の中では小さな雪粒が光る。彼女は自分の手を見つめ、「私達にはまだ知らないこともたくさんあるけど、一緒に探していこうね」</p>
+        <p>「もちろん、君と一緒になら何でもできるさ」</p>
+
+        <p>新しい魔法学校での一日が始まった。</p>
+        <p>窓から見えるのは魔法の塔と冬晴れ。「ここからは新たな冒険が広がるんだよ」と源太郎は彩葉に微笑んで見せた。彼女もまた同じように笑って返す。</p>
+
+        <p>雪粒が光り、風に乗って遠くへ消えていく。</p>
+        <p>「この学校での日々が楽しいものになりますように」</p>
+        <p>その瞬間、冬空の青い色は深くなり、魔法塔から漏れる暖かい灯りが二人を包み込んだ。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>18歳の思い</p>
+    <p>Generated locally with Ollama + Stable Diffusion</p>
+  </footer>
+
+
+  <button class="tts-fab" id="ttsFab" onclick="ttsToggle()" title="Read aloud">
+    <span id="ttsFabIcon">&#x1f50a;</span>
+  </button>
+  <div class="tts-bar" id="ttsBar">
+    <button onclick="ttsPause()" id="ttsPauseBtn">&#x23f8;</button>
+    <button onclick="ttsStop()">&#x23f9;</button>
+    <button onclick="ttsPrev()">&#x23ee;</button>
+    <button onclick="ttsNext()">&#x23ed;</button>
+    <span class="tts-info" id="ttsInfo">Ready</span>
+    <span class="tts-speed">
+      <input type="range" id="ttsSpeed" min="0.5" max="2.0" step="0.1"
+             value="1.0" onchange="ttsSetSpeed(this.value)" />
+      <span id="ttsSpeedVal">1.0x</span>
+    </span>
+  </div>
+
+  <button class="mode-toggle" onclick="toggleMode()">🌗 表示切替</button>
+
+  <script>
+    // Reading mode
+    function toggleMode() {
+      document.body.classList.toggle('light');
+      localStorage.setItem('mode', document.body.classList.contains('light') ? 'light' : 'dark');
+    }
+    if (localStorage.getItem('mode') === 'light') document.body.classList.add('light');
+
+    // Scroll progress
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      document.getElementById('progress').style.width = pct + '%';
+    });
+
+    // === TTS (Web Speech API) ===
+    const synth = window.speechSynthesis;
+    let ttsChs = [], ttsI = 0, ttsRate = 1.0, ttsOn = false, ttsPd = false;
+
+    document.querySelectorAll('.chapter').forEach((sec, i) => {
+      const b = sec.querySelector('.chapter-body');
+      const t = sec.querySelector('.chapter-title');
+      if (b) ttsChs.push({
+        title: t ? t.textContent : ('Ch.' + (i+1)),
+        text: b.textContent.trim(), el: sec
+      });
+    });
+
+    function ttsToggle() {
+      if (!synth) { alert('Speech not supported'); return; }
+      if (ttsOn) { ttsStop(); return; }
+      const sy = window.scrollY + window.innerHeight / 3;
+      let cl = 0;
+      ttsChs.forEach((c, i) => { if (c.el.offsetTop <= sy) cl = i; });
+      ttsI = cl; ttsOn = true; ttsPd = false;
+      document.getElementById('ttsFab').classList.add('speaking');
+      document.getElementById('ttsFabIcon').innerHTML = '&#x23f9;';
+      document.getElementById('ttsBar').classList.add('active');
+      _ttsRead();
+    }
+
+    function _ttsRead() {
+      if (ttsI >= ttsChs.length) { ttsStop(); return; }
+      synth.cancel();
+      const ch = ttsChs[ttsI];
+      document.getElementById('ttsInfo').textContent = ch.title;
+      ch.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Split by Japanese sentence endings for reliable playback
+      const sents = ch.text.match(/[^。！？
+]+[。！？]?/g) || [ch.text];
+      let si = 0;
+
+      function next() {
+        if (!ttsOn) return;
+        if (si >= sents.length) {
+          ttsI++;
+          if (ttsI < ttsChs.length) setTimeout(_ttsRead, 800);
+          else ttsStop();
+          return;
+        }
+        const u = new SpeechSynthesisUtterance(sents[si].trim());
+        u.lang = 'ja-JP'; u.rate = ttsRate;
+        const vs = synth.getVoices();
+        const jv = vs.find(v => v.lang && v.lang.startsWith('ja'));
+        if (jv) u.voice = jv;
+        u.onend = () => { si++; next(); };
+        u.onerror = () => { si++; next(); };
+        synth.speak(u);
+      }
+      next();
+    }
+
+    function ttsPause() {
+      if (!ttsOn) return;
+      if (ttsPd) {
+        synth.resume(); ttsPd = false;
+        document.getElementById('ttsPauseBtn').innerHTML = '&#x23f8;';
+      } else {
+        synth.pause(); ttsPd = true;
+        document.getElementById('ttsPauseBtn').innerHTML = '&#x25b6;';
+      }
+    }
+
+    function ttsStop() {
+      synth.cancel(); ttsOn = false; ttsPd = false;
+      document.getElementById('ttsFab').classList.remove('speaking');
+      document.getElementById('ttsFabIcon').innerHTML = '&#x1f50a;';
+      document.getElementById('ttsBar').classList.remove('active');
+      document.getElementById('ttsInfo').textContent = 'Ready';
+      document.getElementById('ttsPauseBtn').innerHTML = '&#x23f8;';
+    }
+
+    function ttsNext() { if (ttsOn && ttsI < ttsChs.length - 1) { ttsI++; _ttsRead(); } }
+    function ttsPrev() { if (ttsOn && ttsI > 0) { ttsI--; _ttsRead(); } }
+    function ttsSetSpeed(v) {
+      ttsRate = parseFloat(v);
+      document.getElementById('ttsSpeedVal').textContent = v + 'x';
+    }
+    if (synth) synth.onvoiceschanged = () => synth.getVoices();
+
+  </script>
+</body>
+</html>
